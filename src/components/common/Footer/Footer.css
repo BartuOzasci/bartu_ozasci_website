@@ -1,0 +1,127 @@
+/* ============================================================
+   FOOTER STYLES
+   ============================================================ */
+
+.footer {
+  position: relative;
+  background: var(--color-bg-100);
+  border-top: 1px solid rgba(108, 99, 255, 0.1);
+  padding: 3rem 0 2rem;
+  overflow: hidden;
+}
+
+.footer__glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 2px;
+  background: var(--gradient-primary);
+  filter: blur(8px);
+  opacity: 0.6;
+}
+
+.footer__container {
+  width: 100%;
+  max-width: 100%;
+  padding: 0 max(1.5rem, 4vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+}
+
+/* ---- Brand ---- */
+.footer__brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.footer__name {
+  font-family: "Syne", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.footer__tagline {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+}
+
+/* ---- Social Icons ---- */
+.footer__socials {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer__social-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  border-radius: 12px;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.footer__social-icon:hover {
+  color: var(--icon-color, var(--color-primary));
+  border-color: var(--icon-color, rgba(108, 99, 255, 0.5));
+  background: rgba(108, 99, 255, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Tooltip */
+.footer__social-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 40, 0.95);
+  color: #fff;
+  font-size: 0.75rem;
+  font-family: "Syne", sans-serif;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  border: 1px solid rgba(108, 99, 255, 0.2);
+}
+
+.footer__social-tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 5px solid transparent;
+  border-top-color: rgba(20, 20, 40, 0.95);
+}
+
+.footer__social-icon:hover .footer__social-tooltip {
+  opacity: 1;
+}
+
+/* ---- Copyright ---- */
+.footer__copy {
+  color: var(--color-text-muted);
+  font-size: 0.8rem;
+  opacity: 0.7;
+}

@@ -1,0 +1,562 @@
+/* ============================================================
+   PORTFOLIO PAGE - Cosmic / Black Hole Theme
+   Karanlık uzay arka planı, glassmorphism kartlar, pulsing timeline
+   ============================================================ */
+
+/* ---- Page Layout ---- */
+.portfolio-page {
+  min-height: 100vh;
+  background: #03030a;
+  position: relative;
+  overflow: hidden;
+  color: #e8e8ff;
+}
+
+/* ---- Cosmic Background ---- */
+.portfolio-page__cosmic-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Black hole effect */
+.portfolio-page__black-hole {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle at center, #000 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.portfolio-page__black-hole::before {
+  content: "";
+  position: absolute;
+  inset: -100px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    transparent 30%,
+    rgba(108, 99, 255, 0.06) 50%,
+    rgba(0, 212, 255, 0.04) 65%,
+    transparent 80%
+  );
+  animation: spin-slow 40s linear infinite;
+}
+
+/* Particle streams */
+.portfolio-page__particle-stream {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  animation: float-cosmic 12s ease-in-out infinite;
+}
+
+.portfolio-page__particle-stream--1 {
+  width: 500px;
+  height: 200px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(108, 99, 255, 0.15),
+    transparent
+  );
+  top: 20%;
+  left: -100px;
+  transform: rotate(-15deg);
+  animation-delay: 0s;
+}
+
+.portfolio-page__particle-stream--2 {
+  width: 400px;
+  height: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 212, 255, 0.12),
+    transparent
+  );
+  bottom: 25%;
+  right: -80px;
+  transform: rotate(15deg);
+  animation-delay: -4s;
+}
+
+.portfolio-page__particle-stream--3 {
+  width: 300px;
+  height: 100px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 133, 255, 0.1),
+    transparent
+  );
+  top: 70%;
+  left: 20%;
+  transform: rotate(5deg);
+  animation-delay: -8s;
+}
+
+@keyframes float-cosmic {
+  0%,
+  100% {
+    transform: translateX(0) rotate(-15deg);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(40px) rotate(-10deg);
+    opacity: 1;
+  }
+}
+
+/* Thin grid overlay */
+.portfolio-page__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(108, 99, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+}
+
+/* ---- Back Button Bar ---- */
+.portfolio-page__topbar {
+  position: relative;
+  z-index: 10;
+  padding: 2rem 2rem 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ---- Content Wrapper ---- */
+.portfolio-page__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  padding: 3rem max(1.5rem, 5vw) 5rem;
+}
+
+/* ---- Page Header ---- */
+.portfolio-page__header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.portfolio-page__tag {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding: 0.35rem 1rem;
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 50px;
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.portfolio-page__title {
+  font-family: "Syne", sans-serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1;
+  background: linear-gradient(
+    135deg,
+    #fff 0%,
+    rgba(108, 99, 255, 0.9) 50%,
+    #00d4ff 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.portfolio-page__subtitle {
+  color: rgba(153, 153, 187, 0.8);
+  font-size: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 0.05em;
+}
+
+/* ---- Timeline ---- */
+.portfolio-page__timeline {
+  position: relative;
+}
+
+/* Central pulsing line */
+.portfolio-page__timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 22px;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(108, 99, 255, 0.7) 10%,
+    rgba(0, 212, 255, 0.5) 90%,
+    transparent
+  );
+  box-shadow: 0 0 15px rgba(108, 99, 255, 0.3);
+}
+
+/* Pulsing animation on timeline line */
+.portfolio-page__timeline-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 100px;
+  background: linear-gradient(to bottom, var(--color-accent), transparent);
+  border-radius: 3px;
+  animation: timeline-pulse 3s ease-in-out infinite;
+  filter: blur(3px);
+}
+
+@keyframes timeline-pulse {
+  0% {
+    top: -5%;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    top: 105%;
+    opacity: 0;
+  }
+}
+
+/* ---- Timeline Items ---- */
+.portfolio-page__items {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding-left: 60px;
+}
+
+/* ========================================
+   PORTFOLIO SECTIONS
+   ======================================== */
+.portfolio-section {
+  margin-bottom: 5rem;
+}
+
+.portfolio-section__label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.portfolio-section__line {
+  height: 1px;
+  background: linear-gradient(90deg, rgba(108, 99, 255, 0.5), transparent);
+  margin-bottom: 2.5rem;
+}
+
+/* ---- Bio Block ---- */
+.bio-block {
+  max-width: 760px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.bio-block__para {
+  font-size: clamp(0.9rem, 1.5vw, 1.05rem);
+  line-height: 1.78;
+  color: rgba(200, 200, 230, 0.85);
+  padding-left: 1.25rem;
+  border-left: 2px solid rgba(108, 99, 255, 0.4);
+}
+
+/* ---- Skills Grid ---- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ---- Skill Card ---- */
+.skill-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(108, 99, 255, 0.12);
+  border-radius: 18px;
+  padding: 1.5rem;
+  backdrop-filter: blur(20px);
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cat-color, #6c63ff), transparent);
+  opacity: 0.7;
+}
+
+.skill-card:hover {
+  border-color: rgba(108, 99, 255, 0.3);
+  box-shadow:
+    0 10px 40px rgba(0, 0, 0, 0.3),
+    0 0 20px rgba(108, 99, 255, 0.06);
+}
+
+.skill-card__icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+}
+
+.skill-card__title {
+  font-family: "Syne", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+/* ---- Skill Bar ---- */
+.skill-bar {
+  margin-bottom: 0.9rem;
+}
+
+.skill-bar__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.3rem;
+}
+
+.skill-bar__name {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: rgba(200, 200, 230, 0.8);
+}
+
+.skill-bar__level {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.65rem;
+  color: rgba(153, 153, 187, 0.7);
+}
+
+.skill-bar__track {
+  height: 4px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.skill-bar__fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+/* ========================================
+   EXPERIENCE TIMELINE
+   ======================================== */
+.exp-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.exp-item__dot {
+  flex-shrink: 0;
+  width: 12px;
+  height: 12px;
+  background: var(--gradient-primary);
+  border-radius: 50%;
+  border: 2px solid #03030a;
+  box-shadow: 0 0 14px rgba(108, 99, 255, 0.65);
+  position: relative;
+  z-index: 1;
+  margin-top: 0.35rem;
+  /* alignment with timeline line */
+  margin-left: -6px;
+}
+
+.exp-item__card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(108, 99, 255, 0.12);
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  flex: 1;
+  transition:
+    border-color 0.3s,
+    box-shadow 0.3s;
+}
+
+.exp-item__card:hover {
+  border-color: rgba(108, 99, 255, 0.3);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.exp-item__year {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.68rem;
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.exp-item__title {
+  font-family: "Syne", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.2rem;
+  line-height: 1.2;
+}
+
+.exp-item__institution {
+  font-size: 0.78rem;
+  color: var(--color-primary-light);
+  font-family: "JetBrains Mono", monospace;
+  display: block;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.05em;
+}
+
+.exp-item__desc {
+  font-size: 0.85rem;
+  color: rgba(153, 153, 187, 0.85);
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+}
+
+.exp-item__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.exp-item__tag {
+  padding: 0.18rem 0.55rem;
+  background: rgba(108, 99, 255, 0.1);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 50px;
+  font-size: 0.68rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--color-primary-light);
+}
+
+/* ---- CV Section ---- */
+.portfolio-page__cv {
+  margin-top: 4rem;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  border-radius: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-page__cv::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  opacity: 0.5;
+}
+
+.portfolio-page__cv h3 {
+  font-family: "Syne", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, #fff, #8b85ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.portfolio-page__cv p {
+  color: rgba(153, 153, 187, 0.8);
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.portfolio-page__cv-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 2.5rem;
+  background: var(--gradient-primary);
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  font-family: "Syne", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  box-shadow:
+    0 4px 20px rgba(108, 99, 255, 0.5),
+    0 0 40px rgba(108, 99, 255, 0.2);
+  animation: glow 2s ease-in-out infinite alternate;
+  text-transform: uppercase;
+}
+
+.portfolio-page__cv-btn:hover {
+  box-shadow:
+    0 8px 40px rgba(108, 99, 255, 0.8),
+    0 0 80px rgba(0, 212, 255, 0.3);
+  transform: translateY(-3px) scale(1.03);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .portfolio-page__items {
+    padding-left: 30px;
+  }
+  .portfolio-page__timeline-line {
+    left: 14px;
+  }
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1400px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
