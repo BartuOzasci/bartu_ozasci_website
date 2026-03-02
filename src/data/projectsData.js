@@ -8,7 +8,7 @@ export const allProjectsData = [
     id: 1,
     title: "AI Destekli Görsel Analiz ve Soru-Cevap (VQA) Sistemi",
     category: "AI / Computer Vision",
-    image: "/src/assets/img/projects/main_project_1.png",
+    image: "/assets_img/projects/main_project_1.png",
     description:
       "Kullanıcıların yüklediği görseller üzerinde Salesforce'un gelişmiş BLIP (Bootstrapping Language-Image Pre-training) derin öğrenme modellerini kullanarak otomatik içerik açıklaması (captioning) oluşturan ve görseller hakkında sorulan karmaşık soruları yanıtlayan yenilikçi bir web uygulamasıdır. Sistem, 'lazy loading' (tembel yükleme) mimarisiyle modelleri yalnızca ihtiyaç anında belleğe alarak yüksek sunucu optimizasyonu sağlar. Ayrıca, entegre çeviri katmanı sayesinde İngilizce eğitilmiş AI modelleriyle tamamen Türkçe etkileşim kurulmasına olanak tanır. Ön yüzde ise sürükle-bırak dosya yükleme, gerçek zamanlı sohbet (chat) ekranı ve cam efekti (glassmorphism) gibi modern UI/UX tasarım trendleriyle kesintisiz bir kullanıcı deneyimi sunar.",
     technologies: [
@@ -32,7 +32,7 @@ export const allProjectsData = [
     id: 2,
     title: "Bütçe Takip : Finansal Yönetim ve Analiz Sistemi",
     category: "Web Development",
-    image: "/src/assets/img/projects/main_project_2.png",
+    image: "/assets_img/projects/main_project_2.png",
     description:
       "Kullanıcıların gelir ve gider hareketlerini detaylı bir şekilde izlemelerine, yönetmelerine ve analiz etmelerine olanak tanıyan, ASP.NET Core MVC mimarisi ile geliştirilmiş kapsamlı bir bütçe takip web uygulamasıdır. Sistem; işlemleri (gelir/gider) özel olarak oluşturulabilen kategoriler altında sınıflandırma ve bu verileri Entity Framework Core aracılığıyla güvenilir bir veritabanı altyapısında saklama özelliklerine sahiptir. Entegre Dashboard (Kontrol Paneli) sayesinde kullanıcılar, toplam gelir, gider ve net bakiye gibi kritik finansal metriklerini tek bir ekranda özet olarak görüntüleyerek daha sağlıklı bütçe planlaması yapabilirler. Backend tarafında C# gücünden faydalanılırken, ön yüzde Razor Views ve standart web teknolojileri kullanılarak dinamik ve kullanıcı dostu bir arayüz sunulmaktadır.",
     technologies: [
@@ -53,7 +53,7 @@ export const allProjectsData = [
     id: 3,
     title: "Kişisel Portfolyo & Blog",
     category: "AI / NLP",
-    image: "/src/assets/img/projects/main_project_3.png",
+    image: "/assets_img/projects/main_project_3.png",
     description:
       "Ollama üzerinde çalışan yerel bir büyük dil modeli (LLM) ile güncel futbol haberlerini birleştirerek Türkçe yanıtlar üreten yapay zeka tabanlı bir chatbot uygulamasıdır. Sistem; RSS beslemeleri, NewsAPI ve TheSportsDB gibi çoklu kaynaklardan asenkron (paralel) olarak haber ve maç verilerini çeker, tekilleştirir ve İngilizce içerikleri otomatik çevirerek modele bağlam (context) olarak sunar. FastAPI ile geliştirilen arka uç mimarisi, Server-Sent Events (SSE) teknolojisi üzerinden streaming (akış) yaparak frontend'e anlık veri iletir ve 'typewriter' efektiyle dinamik bir sohbet deneyimi oluşturur. Ayrıca bellek-içi akıllı önbellekleme (cache) ile dış API çağrıları optimize edilirken, ön yüzde Tailwind CSS kullanılarak koyu temalı ve mobil uyumlu modern bir arayüz sağlanmaktadır.",
     technologies: [
@@ -75,7 +75,7 @@ export const allProjectsData = [
     id: 4,
     title: "İHA Kanat Optimizasyonu: Surrogate Modelleme",
     category: "AI / Mühendislik",
-    image: "/src/assets/img/projects/main_project_4.png",
+    image: "/assets_img/projects/main_project_4.png",
     description:
       "Bayesian Optimizasyon ve Aktif Öğrenme teknikleri kullanılarak İHA (drone) kanat tasarımında, yapısal güvenlik kısıtı (maksimum sehim) altında ağırlık minimizasyonu sağlayan bir mühendislik optimizasyon sistemidir. Hesaplama maliyeti yüksek olan fizik motoru (Euler-Bernoulli kiriş teorisi) simülasyonlarını minimize etmek amacıyla Gaussian Process (GP) tabanlı bir surrogate (vekil) model kullanır. Expected Improvement (EI) edinim fonksiyonu sayesinde belirsiz bölgeleri keşfetme (exploration) ve bilinen iyi bölgeleri sömürme (exploitation) dengesini kurarak, en az simülasyon çağrısıyla en hafif kanat geometrisini (uzunluk, genişlik, kalınlık) otomatik olarak bulur. Sistem ayrıca Latin Hiperkup Örnekleme (LHS) ile başlangıç veri seti oluşturma ve 'Warm Start' özelliği ile optimizasyona kaldığı yerden devam edebilme yeteneklerine sahiptir.",
     technologies: [
@@ -98,7 +98,7 @@ export const allProjectsData = [
     id: 5,
     title: "FinApp: Modern Finansal Analiz ve Yatırım Platformu",
     category: "Web Development",
-    image: "/src/assets/img/projects/project_5.png",
+    image: "/assets_img/projects/project_5.png",
     description:
       "Yatırımcılar için özel olarak geliştirilmiş, React ve Vite tabanlı kapsamlı bir finansal analiz web uygulamasıdır. Sistem; ExchangeRate-API ve GoldAPI entegrasyonları ile gerçek zamanlı döviz ve altın fiyatlarını sunarken, kullanıcıların yatırım getirilerini ve halka arz (IPO) senaryolarını simüle etmelerine olanak tanır. Chart.js destekli interaktif portföy grafikleri ve Bootstrap ile tasarlanmış tam duyarlı (responsive) modern arayüzü sayesinde, kullanıcıların finansal varlıklarını profesyonel araçlarla yönetmesini ve detaylı analizler yapmasını sağlar.",
     technologies: [
@@ -118,7 +118,7 @@ export const allProjectsData = [
     id: 6,
     title: "Eskişehir Trafik Tahmin ve Rota Optimizasyon Sistemi",
     category: "AI / ML",
-    image: "/src/assets/img/projects/project_6.png",
+    image: "/assets_img/projects/project_6.png",
     description:
       "Eskişehir'deki önemli lokasyonlar (ESPARK, ESOGÜ, ESTÜ) arasında en optimal ve en az trafikli çıkış saatini öneren yapay zeka destekli bir web uygulamasıdır. Sistem, Google Maps Distance Matrix API üzerinden toplanan ve sentetik olarak zenginleştirilen veriler üzerinde özellik mühendisliği (zaman döngüselliği, rush hour vb.) yaparak eğitilmiş LightGBM regresyon modelini kullanır. Arka uç (backend), tahmin modelini Flask üzerinden REST API olarak sunarken; React ve Bootstrap ile tasarlanmış ön yüz (frontend), Leaflet destekli dinamik haritalar aracılığıyla kullanıcılara gerçek zamanlı rota ve trafik yoğunluğu simülasyonları sağlar.",
     technologies: [
@@ -140,7 +140,7 @@ export const allProjectsData = [
     id: 7,
     title: "Career Agent: Yapay Zeka Destekli Kariyer Gelişim Ajanı",
     category: "AI / NLP",
-    image: "/src/assets/img/projects/project_7.png",
+    image: "/assets_img/projects/project_7.png",
     description:
       "Google Gemini 2.5 Flash modelini kullanarak kullanıcıların kariyer hedeflerine yönelik detaylı planlama ve danışmanlık hizmeti sunan akıllı bir chatbot uygulamasıdır. Python ve FastAPI tabanlı arka uç (backend) mimarisi, LangChain entegrasyonu ile LLM yönetimini sağlarken, Server-Sent Events (SSE) teknolojisi sayesinde modelden gelen yanıtları frontend'e kelime kelime ('streaming') aktararak gerçek zamanlı bir sohbet hissiyatı yaratır. React ve TypeScript ile geliştirilen modern ön yüz (frontend), Bootstrap 5 ile tam uyumlu, pürüzsüz animasyonlara sahip (smooth animations) ve mobil cihazlar için optimize edilmiş şık bir kullanıcı deneyimi sunar.",
     technologies: [
@@ -162,7 +162,7 @@ export const allProjectsData = [
     id: 8,
     title: "RAG Tabanlı Yapay Zeka Asistanı",
     category: "AI / NLP",
-    image: "/src/assets/img/projects/project_8.png",
+    image: "/assets_img/projects/project_8.png",
     description:
       "Kullanıcıların yüklediği PDF dökümanları üzerinden Retrieval-Augmented Generation (RAG) mimarisini kullanarak soru-cevap hizmeti sunan, Google Gemini API destekli bir müşteri destek sohbet botudur. Sistem, LangChain framework'ü ile PDF metinlerini anlamlı parçalara ayırır (chunking) ve FAISS (Facebook AI Similarity Search) vektör veritabanında indeksler. Gelişmiş Gemini 2.0 Flash dil modeli ve sohbet geçmişini saklayan konuşma belleği (ConversationBufferMemory) entegrasyonu sayesinde bağlama duyarlı, akıcı bir asistan deneyimi yaratır. Proje, hem komut satırı (CLI) üzerinden çalışabilen terminal modülüne hem de Streamlit ile tasarlanmış kullanıcı dostu, modern bir web arayüzüne sahiptir.",
     technologies: [
@@ -182,7 +182,7 @@ export const allProjectsData = [
     id: 9,
     title: "Tic-Tac-Toe Football: Logo Dağıtımlı 4x4 Grid Oyunu",
     category: "Web Development",
-    image: "/src/assets/img/projects/project_9.png",
+    image: "/assets_img/projects/project_9.png",
     description:
       "React kullanılarak geliştirilmiş, futbol logoları ile tasarlanmış 4x4 grid tabanlı interaktif bir web uygulamasıdır. Uygulama, performanslı Fisher-Yates karıştırma algoritmasını kullanarak geniş bir Avrupa ve Türk futbol kulübü logo havuzundan her seferinde rastgele 6 farklı logo seçer ve bu logoları grid üzerindeki dinamik hücrelere yerleştirir. Kullanıcılar, arayüzdeki 'Yeniden Dağıt' (Shuffle) butonu aracılığıyla logoları anlık olarak karıştırıp yeni kombinasyonlar oluşturabilirler.",
     technologies: ["React 18", "JavaScript (ES6+)", "CSS3", "HTML5"],
