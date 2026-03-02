@@ -16,7 +16,7 @@ export const heroData = {
 // ---- ABOUT SECTION ----
 export const aboutData = {
   // Resim: src/assets/img/home/profile.jpg koyunuz
-  profileImage: "/src/assets/img/home/about_Photo.jpeg",
+  profileImage: "/assets_img/home/about_Photo.jpeg",
   description: `Ben Bartu Özaşçı. 2 Aralık 2000 tarihinde İzmir, Konak’ta doğdum. İlk ve ortaöğrenimimi Balıkesir'de tamamladıktan sonra, lise eğitimime Balıkesir Cumhuriyet Anadolu Lisesi’nde başlayıp 2019 yılında Karesi Temel Lisesi’nden mezun oldum.
 2024 yılında Eskişehir Osmangazi Üniversitesi İnşaat Mühendisliği Bölümü’ndeki lisans eğitimimi başarıyla tamamladım.
 Şu anda akademik kariyerime aynı üniversitede devam ediyor; Prof. Dr. Hakan Özbaşaran danışmanlığında, 'İnşaat Mühendisliğinde Yapay Zeka' üzerine yüksek lisans çalışmalarımı sürdürüyorum.
@@ -53,7 +53,7 @@ export const timelineProjects = [
       "Tailwind CSS 4",
       "Axios",
     ],
-    image: "/src/assets/img/projects/main_project_1.png",
+    image: "/assets_img/projects/main_project_1.png",
     // imgSide: "right" = Resim sağda, "left" = Resim solda (timeline sıralı)
     imgSide: "right",
   },
@@ -72,7 +72,7 @@ export const timelineProjects = [
       "JavaScript",
       "SQL Server (veya SQLite - Entity Framework destekli DB provider)",
     ],
-    image: "/src/assets/img/projects/main_project_2.png",
+    image: "/assets_img/projects/main_project_2.png",
     imgSide: "left",
   },
   {
@@ -91,7 +91,7 @@ export const timelineProjects = [
       "NewsAPI & TheSportsDB",
       "RSS (XML)",
     ],
-    image: "/src/assets/img/projects/main_project_3.png",
+    image: "/assets_img/projects/main_project_3.png",
     imgSide: "right",
   },
   {
@@ -108,7 +108,7 @@ export const timelineProjects = [
       "Joblib",
       "PyTorch",
     ],
-    image: "/src/assets/img/projects/main_project_4.png",
+    image: "/assets_img/projects/main_project_4.png",
     imgSide: "left",
   },
 ];
