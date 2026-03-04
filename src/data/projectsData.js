@@ -51,7 +51,7 @@ export const allProjectsData = [
   },
   {
     id: 3,
-    title: "Kişisel Portfolyo & Blog",
+    title: "Ollama Futbol Haber ve Sohbet Chatbotu",
     category: "AI / NLP",
     image: "/assets_img/projects/main_project_3.png",
     description:
