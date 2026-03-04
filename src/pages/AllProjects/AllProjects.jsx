@@ -67,15 +67,15 @@ const ProjectCard = ({ project }) => {
         <div className="project-card__category">{project.category}</div>
         <h3 className="project-card__title">{project.title}</h3>
 
-        {/* Tech Tags (first 4) */}
+        {/* Tech Tags – max 2 satır */}
         <div className="project-card__tags">
           {project.technologies.slice(0, 4).map((tech) => (
-            <span key={tech} className="project-card__tag">
+            <span key={tech} className="project-card__tag" title={tech}>
               {tech}
             </span>
           ))}
           {project.technologies.length > 4 && (
-            <span className="project-card__tag">
+            <span className="project-card__tag project-card__tag--more">
               +{project.technologies.length - 4}
             </span>
           )}
