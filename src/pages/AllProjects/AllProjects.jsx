@@ -16,10 +16,13 @@ import "./AllProjects.css";
 
 // Unique categories
 const ALL_CATEGORY = "Tümü";
-const getCategories = (projects) => [
-  ALL_CATEGORY,
-  ...Array.from(new Set(projects.map((p) => p.category.split("/")[0].trim()))),
-];
+const getCategories = (projects) => {
+  const cats = new Set();
+  projects.forEach((p) => {
+    p.category.split("/").forEach((c) => cats.add(c.trim()));
+  });
+  return [ALL_CATEGORY, ...Array.from(cats)];
+};
 
 // ---- Single Project Card ----
 const ProjectCard = ({ project }) => {
@@ -161,8 +164,11 @@ const AllProjects = () => {
   const filtered =
     activeFilter === ALL_CATEGORY
       ? allProjectsData
-      : allProjectsData.filter(
-          (p) => p.category.split("/")[0].trim() === activeFilter,
+      : allProjectsData.filter((p) =>
+          p.category
+            .split("/")
+            .map((c) => c.trim())
+            .includes(activeFilter),
         );
 
   return (
