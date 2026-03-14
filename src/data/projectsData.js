@@ -211,4 +211,25 @@ export const allProjectsData = [
     githubUrl: "https://github.com/BartuOzasci/full_stack_lawyer_rag_ollama",
     featured: true,
   },
+  {
+    id: 11,
+    title: "CV Analiz Chatbot v1.0: RAG Tabanlı Aday Eşleştirme Platformu",
+    category: "Full Stack / NLP",
+    image: "/assets_img/projects/project_11.png",
+    description:
+      "React ve FastAPI kullanılarak geliştirilmiş, hibrit RAG (Retrieval-Augmented Generation) tabanlı yapay zeka destekli CV analiz ve aday eşleştirme platformudur. Sistem, yüklenen PDF ve DOCX formatındaki özgeçmişlerden otomatik metin çıkarımı ve JSON yapılandırması yapar. ChromaDB, SentenceTransformer ve yerel LLM (Ollama) entegrasyonu sayesinde doğal dildeki aramalara (örn: 'React bilen, 3 yıl deneyimli yazılımcı') en uygun adayları semantik olarak filtreler. Modüler yapısı, çevrimdışı çalışma özelliği ve sohbet geçmişi kayıtlarıyla verimli, modern ve profesyonel bir insan kaynakları aracı olarak hizmet verir.",
+    technologies: [
+      "React (Vite)",
+      "Tailwind CSS",
+      "FastAPI",
+      "Python",
+      "ChromaDB",
+      "SentenceTransformer",
+      "SQLite",
+      "Ollama",
+    ],
+    liveUrl: "https://github.com/BartuOzasci/CV_Analiz_Chatbot",
+    githubUrl: "https://github.com/BartuOzasci/CV_Analiz_Chatbot",
+    featured: true,
+  },
 ];
