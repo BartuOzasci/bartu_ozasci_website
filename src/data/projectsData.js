@@ -228,8 +228,8 @@ export const allProjectsData = [
       "SQLite",
       "Ollama",
     ],
-    liveUrl: "https://github.com/BartuOzasci/CV_Analiz_Chatbot",
-    githubUrl: "https://github.com/BartuOzasci/CV_Analiz_Chatbot",
+    liveUrl: "https://github.com/BartuOzasci/cv_analyse_chatbot",
+    githubUrl: "https://github.com/BartuOzasci/cv_analyse_chatbot",
     featured: true,
   },
 ];
