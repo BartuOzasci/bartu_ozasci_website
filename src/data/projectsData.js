@@ -213,7 +213,7 @@ export const allProjectsData = [
   },
   {
     id: 11,
-    title: "CV Analiz Chatbot v1.0: RAG Tabanlı Aday Eşleştirme Platformu",
+    title: "CV Analiz Chatbot : RAG Tabanlı Aday Eşleştirme Platformu",
     category: "Full Stack / NLP",
     image: "/assets_img/projects/project_11.png",
     description:
