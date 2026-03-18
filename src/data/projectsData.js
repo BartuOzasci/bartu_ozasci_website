@@ -97,7 +97,7 @@ export const allProjectsData = [
   {
     id: 5,
     title: "FinApp: Modern Finansal Analiz ve Yatırım Platformu",
-    category: "Web Development",
+    category: "Web App",
     image: "/assets_img/projects/project_5.png",
     description:
       "Yatırımcılar için özel olarak geliştirilmiş, React ve Vite tabanlı kapsamlı bir finansal analiz web uygulamasıdır. Sistem; ExchangeRate-API ve GoldAPI entegrasyonları ile gerçek zamanlı döviz ve altın fiyatlarını sunarken, kullanıcıların yatırım getirilerini ve halka arz (IPO) senaryolarını simüle etmelerine olanak tanır. Chart.js destekli interaktif portföy grafikleri ve Bootstrap ile tasarlanmış tam duyarlı (responsive) modern arayüzü sayesinde, kullanıcıların finansal varlıklarını profesyonel araçlarla yönetmesini ve detaylı analizler yapmasını sağlar.",
@@ -181,7 +181,7 @@ export const allProjectsData = [
   {
     id: 9,
     title: "Tic-Tac-Toe Football: Logo Dağıtımlı 4x4 Grid Oyunu",
-    category: "Web Development",
+    category: "Web App",
     image: "/assets_img/projects/project_9.png",
     description:
       "React kullanılarak geliştirilmiş, futbol logoları ile tasarlanmış 4x4 grid tabanlı interaktif bir web uygulamasıdır. Uygulama, performanslı Fisher-Yates karıştırma algoritmasını kullanarak geniş bir Avrupa ve Türk futbol kulübü logo havuzundan her seferinde rastgele 6 farklı logo seçer ve bu logoları grid üzerindeki dinamik hücrelere yerleştirir. Kullanıcılar, arayüzdeki 'Yeniden Dağıt' (Shuffle) butonu aracılığıyla logoları anlık olarak karıştırıp yeni kombinasyonlar oluşturabilirler.",
