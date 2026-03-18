@@ -1,0 +1,171 @@
+/* ============================================================
+   BUTTON COMPONENT - Geliştirilmiş Tasarım
+   ============================================================ */
+
+@keyframes btn-shimmer {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(320%) skewX(-15deg);
+  }
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.8rem 2rem;
+  border-radius: 50px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Make children sit above pseudo elements */
+.btn > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Primary ---- */
+.btn-primary {
+  background: linear-gradient(135deg, #6c63ff 0%, #00d4ff 100%);
+  color: #fff;
+  box-shadow:
+    0 4px 20px rgba(108, 99, 255, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+/* Shimmer sweep */
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -80%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 50%,
+    transparent 100%
+  );
+  transform: skewX(-15deg);
+}
+
+.btn-primary:hover::before {
+  animation: btn-shimmer 0.6s ease forwards;
+}
+
+.btn-primary:hover {
+  box-shadow:
+    0 8px 40px rgba(108, 99, 255, 0.7),
+    0 0 25px rgba(0, 212, 255, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-primary:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.5);
+}
+
+/* ---- Outline ---- */
+.btn-outline {
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid rgba(108, 99, 255, 0.55);
+  box-shadow: inset 0 0 30px rgba(108, 99, 255, 0.04);
+}
+
+.btn-outline::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(108, 99, 255, 0.15) 0%,
+    rgba(0, 212, 255, 0.08) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-outline:hover::before {
+  opacity: 1;
+}
+
+.btn-outline:hover {
+  color: #fff;
+  border-color: rgba(0, 212, 255, 0.8);
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 255, 0.6),
+    0 8px 30px rgba(108, 99, 255, 0.5),
+    inset 0 0 30px rgba(108, 99, 255, 0.08);
+  transform: translateY(-3px) scale(1.02);
+}
+
+.btn-outline:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* ---- Ghost ---- */
+.btn-ghost {
+  background: rgba(108, 99, 255, 0.08);
+  color: var(--color-primary-light);
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  backdrop-filter: blur(8px);
+}
+
+.btn-ghost::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(108, 99, 255, 0.18),
+    rgba(0, 212, 255, 0.1)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.btn-ghost:hover::before {
+  opacity: 1;
+}
+
+.btn-ghost:hover {
+  border-color: rgba(108, 99, 255, 0.6);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(108, 99, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-ghost:active {
+  transform: translateY(0);
+}
+
+/* ---- Size Variants ---- */
+.btn-sm {
+  padding: 0.55rem 1.35rem;
+  font-size: 0.78rem;
+}
+.btn-lg {
+  padding: 1.05rem 2.8rem;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+}

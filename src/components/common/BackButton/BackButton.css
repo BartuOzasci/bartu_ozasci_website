@@ -1,0 +1,36 @@
+/* ============================================================
+   BACK BUTTON STYLES
+   ============================================================ */
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(108, 99, 255, 0.1);
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  border-radius: 50px;
+  color: var(--color-primary-light, #8b85ff);
+  font-family: "Syne", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  background: rgba(108, 99, 255, 0.25);
+  border-color: rgba(108, 99, 255, 0.6);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+}
+
+.back-btn__icon {
+  font-size: 1rem;
+  transition: transform 0.3s;
+}
+
+.back-btn:hover .back-btn__icon {
+  transform: translateX(-3px);
+}

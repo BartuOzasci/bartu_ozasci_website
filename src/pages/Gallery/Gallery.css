@@ -1,0 +1,382 @@
+/* ============================================================
+   GALLERY PAGE — 3D Rotating Carousel
+   ============================================================ */
+
+/* ---- Page ---- */
+.gallery-page {
+  min-height: 100vh;
+  background: #02020a;
+  color: #e8e8ff;
+  overflow: hidden;
+  position: relative;
+}
+
+/* ---- Ambient Background ---- */
+.gallery-page__bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gallery-page__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.gallery-page__glow--1 {
+  width: 600px;
+  height: 600px;
+  top: 10%;
+  left: 20%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(108, 99, 255, 0.12) 0%,
+    transparent 70%
+  );
+}
+
+.gallery-page__glow--2 {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  right: 20%;
+  transform: translate(50%, 50%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+.gallery-page__grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(108, 99, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108, 99, 255, 0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+/* ---- Top Bar ---- */
+.gallery-page__topbar {
+  position: relative;
+  z-index: 20;
+  padding: 2rem 2rem 0;
+}
+
+/* ---- Inner layout ---- */
+.gallery-page__inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: calc(100vh - 80px);
+  padding: 2rem max(1.5rem, 4vw) 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==================================================
+   3D CAROUSEL STAGE
+   ================================================== */
+.gallery-stage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Bottom padding accommodates 3D cards that visually overflow below the scene */
+  padding: 0 80px 60px;
+  margin-bottom: 0;
+}
+
+/* Side gradient masks — hide overflowing 3D side cards */
+.gallery-stage::before,
+.gallery-stage::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 200px;
+  z-index: 5;
+  pointer-events: none;
+}
+.gallery-stage::before {
+  left: 80px;
+  background: linear-gradient(to right, #02020a 40%, transparent 100%);
+}
+.gallery-stage::after {
+  right: 80px;
+  background: linear-gradient(to left, #02020a 40%, transparent 100%);
+}
+
+/* ---- Scene (defines perspective) ---- */
+.gallery-scene {
+  width: 340px;
+  height: 420px;
+  perspective: 1100px;
+  perspective-origin: 50% 50%;
+  flex-shrink: 0;
+}
+
+/* ---- Carousel (the 3D ring) ---- */
+.gallery-carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---- Individual Card ---- */
+.gallery-card {
+  position: absolute;
+  width: 320px;
+  height: 400px;
+  left: 50%;
+  top: 50%;
+  margin-left: -160px;
+  margin-top: -200px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition:
+    filter 0.5s ease,
+    box-shadow 0.5s ease;
+  filter: brightness(0.45) saturate(0.5);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(108, 99, 255, 0.1);
+  backface-visibility: hidden;
+}
+
+.gallery-card--active {
+  filter: brightness(1) saturate(1.1);
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    0 0 40px rgba(108, 99, 255, 0.3),
+    0 0 80px rgba(0, 212, 255, 0.1);
+  border-color: rgba(108, 99, 255, 0.5);
+  cursor: default;
+}
+
+.gallery-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.gallery-card--active .gallery-card__img {
+  transform: scale(1.03);
+}
+
+.gallery-card__placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0a0a20, #1a1a35);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: 3rem;
+  color: rgba(108, 99, 255, 0.3);
+}
+
+.gallery-card__placeholder span {
+  font-family: "Syne", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: rgba(108, 99, 255, 0.4);
+}
+
+.gallery-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(5, 5, 20, 0.8) 0%, transparent 50%);
+}
+
+.gallery-card__tag {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.62rem;
+  color: #00d4ff;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.gallery-card--active .gallery-card__tag {
+  opacity: 1;
+}
+
+/* ---- Arrow Buttons ---- */
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 50;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: rgba(108, 99, 255, 0.35);
+  border: 2px solid rgba(108, 99, 255, 0.75);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 18px rgba(108, 99, 255, 0.45);
+  overflow: visible;
+  /* keep arrows above the side gradient masks */
+  isolation: isolate;
+}
+
+/* Force SVG icon visibility inside arrow buttons */
+.gallery-arrow svg {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  flex-shrink: 0;
+  stroke: #fff;
+  fill: none;
+  pointer-events: none;
+  color: #fff;
+}
+
+.gallery-arrow--prev {
+  left: 0.5rem;
+}
+
+.gallery-arrow--next {
+  right: 0.5rem;
+}
+
+.gallery-arrow:hover {
+  background: rgba(108, 99, 255, 0.6);
+  border-color: rgba(108, 99, 255, 0.95);
+  box-shadow: 0 0 28px rgba(108, 99, 255, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.gallery-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* ---- Dots — appear BELOW the 3D carousel, not behind it ---- */
+.gallery-dots {
+  position: relative;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+}
+
+.gallery-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(108, 99, 255, 0.25);
+  border: 1px solid rgba(108, 99, 255, 0.3);
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.gallery-dot--active {
+  background: var(--color-primary);
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 8px rgba(108, 99, 255, 0.6);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.gallery-dot:hover:not(.gallery-dot--active) {
+  background: rgba(108, 99, 255, 0.5);
+}
+
+/* ====================
+   RESPONSIVE
+   ==================== */
+@media (max-width: 600px) {
+  .gallery-arrow {
+    display: none;
+  }
+
+  .gallery-stage {
+    padding: 0 0 50px; /* keep bottom padding so dots stay below 3D cards on mobile */
+  }
+
+  .gallery-stage::before,
+  .gallery-stage::after {
+    display: none;
+  }
+
+  .gallery-scene {
+    width: 280px;
+    height: 360px;
+  }
+
+  .gallery-card {
+    width: 260px;
+    height: 340px;
+    margin-left: -130px;
+    margin-top: -170px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery-scene {
+    width: 380px;
+    height: 460px;
+  }
+
+  .gallery-card {
+    width: 360px;
+    height: 440px;
+    margin-left: -180px;
+    margin-top: -220px;
+  }
+
+  .gallery-arrow {
+    width: 60px;
+    height: 60px;
+  }
+
+  .gallery-arrow svg {
+    width: 1.7rem;
+    height: 1.7rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .gallery-scene {
+    width: 420px;
+    height: 500px;
+  }
+
+  .gallery-card {
+    width: 400px;
+    height: 480px;
+    margin-left: -200px;
+    margin-top: -240px;
+  }
+
+  .gallery-stage {
+    gap: 3rem;
+  }
+}

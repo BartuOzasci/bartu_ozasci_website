@@ -1,0 +1,456 @@
+/* ============================================================
+   ALL PROJECTS PAGE - Kart grid tasarımı + overlay detaylar
+   ============================================================ */
+
+/* ---- Page Layout ---- */
+.projects-page {
+  min-height: 100vh;
+  background: var(--color-bg);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Background subtle glow */
+.projects-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    radial-gradient(
+      ellipse at 20% 20%,
+      rgba(108, 99, 255, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 80%,
+      rgba(0, 212, 255, 0.04) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ---- Back Button ---- */
+.projects-page__topbar {
+  position: relative;
+  z-index: 10;
+  padding: 2rem 2rem 0;
+}
+
+/* ---- Content ---- */
+.projects-page__content {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  padding: 3rem max(1.5rem, 4vw) 5rem;
+}
+
+/* ---- Header ---- */
+.projects-page__header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.projects-page__tag {
+  display: inline-block;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* Filter Buttons */
+.projects-page__filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.projects-page__filter-btn {
+  padding: 0.4rem 1.1rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  border-radius: 50px;
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-family: "Syne", sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.03em;
+}
+
+.projects-page__filter-btn:hover,
+.projects-page__filter-btn.active {
+  background: rgba(108, 99, 255, 0.15);
+  border-color: rgba(108, 99, 255, 0.4);
+  color: #fff;
+}
+
+/* ---- Grid ---- */
+.projects-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.75rem;
+}
+
+/* ---- Project Card ---- */
+.project-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(108, 99, 255, 0.12);
+  border-radius: 20px;
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  border-color: rgba(108, 99, 255, 0.35);
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.4),
+    0 0 30px rgba(108, 99, 255, 0.08);
+  transform: translateY(-4px);
+}
+
+/* Card image */
+.project-card__img-wrap {
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.project-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-card__img {
+  transform: scale(1.06);
+}
+
+.project-card__img-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--color-bg-300), var(--color-bg-400));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: rgba(108, 99, 255, 0.25);
+}
+
+/* Image link overlay */
+.project-card__img-link {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-card__img-link-icon {
+  opacity: 0;
+  transform: scale(0.8);
+  color: #fff;
+  font-size: 1.5rem;
+  background: rgba(108, 99, 255, 0.7);
+  padding: 0.75rem;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+
+.project-card__img-wrap:hover .project-card__img-link {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.project-card__img-wrap:hover .project-card__img-link-icon {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Card Body */
+.project-card__body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.project-card__category {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.project-card__title {
+  font-family: "Syne", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+/* Tags row – max 2 satır */
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+  /* Her tag ~1.5rem yüksek, 2 satır + 1 gap = ~3.35rem */
+  max-height: 3.4rem;
+  overflow: hidden;
+}
+
+.project-card__tag {
+  padding: 0.2rem 0.55rem;
+  background: rgba(108, 99, 255, 0.08);
+  border: 1px solid rgba(108, 99, 255, 0.15);
+  border-radius: 50px;
+  font-size: 0.7rem;
+  font-family: "JetBrains Mono", monospace;
+  color: var(--color-primary-light);
+  white-space: nowrap;
+  max-width: 130px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 0;
+}
+
+.project-card__tag--more {
+  background: rgba(108, 99, 255, 0.15);
+  border-color: rgba(108, 99, 255, 0.3);
+  color: var(--color-accent);
+  max-width: unset;
+}
+
+/* Card Footer Row */
+.project-card__footer {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: auto;
+}
+
+.project-card__detail-btn {
+  flex: 1;
+  padding: 0.55rem;
+  background: rgba(108, 99, 255, 0.12);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: 10px;
+  color: var(--color-primary-light);
+  font-family: "Syne", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--transition);
+  letter-spacing: 0.03em;
+}
+
+.project-card__detail-btn:hover {
+  background: rgba(108, 99, 255, 0.25);
+  border-color: rgba(108, 99, 255, 0.5);
+  color: #fff;
+}
+
+.project-card__live-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: 10px;
+  color: #fff;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: var(--transition);
+  box-shadow: 0 4px 15px rgba(108, 99, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.project-card__live-link:hover {
+  box-shadow: 0 6px 25px rgba(108, 99, 255, 0.6);
+  transform: translateY(-2px);
+}
+
+/* ---- In-card slide-up overlay ---- */
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(8, 8, 18, 0.97);
+  backdrop-filter: blur(8px);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  overflow-y: auto;
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  z-index: 10;
+}
+
+.project-card__overlay.open {
+  transform: translateY(0);
+}
+
+.project-card__overlay-close {
+  align-self: flex-end;
+  width: 36px;
+  height: 36px;
+  background: rgba(108, 99, 255, 0.25);
+  border: 2px solid rgba(108, 99, 255, 0.65);
+  border-radius: 8px;
+  color: #fff;
+  font-size: 1.1rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-bottom: 0.75rem;
+  flex-shrink: 0;
+  /* Never let the card's overflow:hidden clip this button */
+  overflow: visible;
+}
+
+/* Force FiX icon visibility */
+.project-card__overlay-close svg {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+  flex-shrink: 0;
+  stroke: #fff;
+  fill: none;
+  pointer-events: none;
+  color: #fff;
+}
+
+.project-card__overlay-close:hover {
+  background: rgba(200, 50, 50, 0.55);
+  border-color: rgba(220, 80, 80, 0.9);
+  box-shadow: 0 0 12px rgba(200, 80, 80, 0.5);
+}
+
+.project-card__overlay-cat {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.72rem;
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.project-card__overlay-title {
+  font-family: "Syne", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  line-height: 1.25;
+}
+
+.project-card__overlay-desc {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  flex: 1;
+}
+
+.project-card__overlay-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  margin-bottom: 1rem;
+}
+
+.project-card__overlay-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.project-card__overlay-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.55rem;
+  border-radius: 10px;
+  font-family: "Syne", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.project-card__overlay-link--primary {
+  background: var(--gradient-primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(108, 99, 255, 0.3);
+}
+
+.project-card__overlay-link--primary:hover {
+  box-shadow: 0 6px 20px rgba(108, 99, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.project-card__overlay-link--ghost {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(108, 99, 255, 0.25);
+  color: rgba(200, 200, 255, 0.85);
+}
+
+.project-card__overlay-link--ghost:hover {
+  background: rgba(108, 99, 255, 0.12);
+  border-color: rgba(108, 99, 255, 0.5);
+  transform: translateY(-1px);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .projects-page {
+    padding-top: 0;
+  }
+  .projects-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .projects-page__content {
+    padding: 2rem 1rem 4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .projects-page__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .projects-page__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
